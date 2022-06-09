@@ -1,0 +1,24 @@
+{
+  "name": "host-nett2",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000h\u0000o\u0000s\u0000t\u0000n\u0000e\u0000t\u0000\r\u0000 \u0000#\u0000 \u0000h\u0000o\u0000s\u0000t\u0000n\u0000e\u0000t\u0000\r\u0000 \u0000#\u0000 \u0000h\u0000o\u0000s\u0000t\u0000n\u0000e\u0000t\u0000\r\u0000 \u0000#\u0000 \u0000h\u0000o\u0000s\u0000t\u0000n\u0000e\u0000t\u0000\r\u0000 \u0000#\u0000 \u0000h\u0000o\u0000s\u0000t\u0000n\u0000e\u0000t\u0000\r\u0000 \u0000#\u0000 \u0000h\u0000o\u0000s\u0000t\u0000n\u0000e\u0000t\u0000\r\u0000 \u0000#\u0000 \u0000h\u0000o\u0000s\u0000t\u0000n\u0000e\u0000t\u0000\r\u0000 \u0000#\u0000 \u0000h\u0000o\u0000s\u0000t\u0000n\u0000e\u0000t\u0000\r\u0000 \u0000#\u0000 \u0000h\u0000o\u0000s\u0000t\u0000n\u0000e\u0000t\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andu2112/brukest-tte-andreas-2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andu2112/brukest-tte-andreas-2/issues"
+  },
+  "homepage": "https://github.com/andu2112/brukest-tte-andreas-2#readme",
+  "dependencies": {
+    "express": "^0.0.5",
+    "socket.io": "^4.5.1",
+    "socket.io-client": "^4.5.1"
+  }
+}
