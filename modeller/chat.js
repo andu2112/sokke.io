@@ -1,15 +1,13 @@
-const { default: mongoose } = require("mongoose")
-const schema=require("moongose")
-
+const mongoose = require("mongoose");
 
 const chatschema= new mongoose.Schema({
-    meldning:{
-       type:String
+    msg:{
+       type:String,
+       required: true
+    },
+    sender: {
+        type:String,
+        required: true
     }
-
 })
-
-
-
-
-module.exports=mongoose.model("Chat",chatschema)
+module.exports = mongoose.model("Chat",chatschema)
