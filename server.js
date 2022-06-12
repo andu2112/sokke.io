@@ -2,19 +2,18 @@ require("dotenv").config();
 
 const express = require('express');
 const http = require('http');
-const socketIo = require('socket.io');
 const passport= require("passport");
 const session = require("express-session");
 const flash = require("connect-flash");
 const mongoose= require(`mongoose`);
 const path = require('path');
 
-const Chat= require("./modeller/chat");
 const User= require("./modeller/user");
+
+const ioSystem = require("./controllers/ioSystem");
 
 const app = express(); 
 const server = http.Server(app);
-const io = socketIo(server);
 
 const port = process.env.PORT || 3500;
 
@@ -27,6 +26,8 @@ mongoose.connect(url)
   .catch((err)=>{
     console.log(err)
   })
+
+ioSystem.connect(server);
 
 app.set("view engine", "ejs");
 
@@ -59,31 +60,13 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(require('./routes/index.js'));
 app.use(require('./routes/login.js'));
 app.use(require('./routes/signup.js'));
 app.use(require('./routes/logout.js'));
-
-io.on('connection', (socket) => {
-  console.log('a user connected');
-
-  socket.on('send message', async (data) => {
-    const chat = new Chat({
-      msg: data.msg,
-      sender: data.sender
-    });
-
-    await chat.save();
-
-    io.emit('update message', { messages: await Chat.find() });
-  });
-
-  socket.on('get messages', async () => {
-    console.log('success')
-    io.emit('update message', { messages: await Chat.find() });
-  });
-});
+app.use(require('./routes/index.js'));
 
 server.listen(port, () => {
   console.log(` http://localhost:${port}/`);
 });
+
+///socekt.on("disconnection", () => 0)

@@ -8,6 +8,10 @@ const chatschema= new mongoose.Schema({
     sender: {
         type:String,
         required: true
+    },
+    room: {
+        type:String,
+        required: true
     }
 })
 module.exports = mongoose.model("Chat",chatschema)
