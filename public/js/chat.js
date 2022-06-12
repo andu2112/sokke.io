@@ -7,7 +7,6 @@ const username = document.getElementById('username');
 const rooms = document.getElementById('rooms');
 
 socket.on('update message', (data) => {
-  console.log(data);
   messages.innerHTML = "";
 
   data.messages.forEach((data)=>{
@@ -27,10 +26,21 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 rooms.addEventListener('click', (e) => {
-  console.log(e.target);
   if(e.target.classList.contains("nav-link")) {
-    console.log('if')
-    socket.emit("join room", e.target.id, username.innerText);
+    const linkID = e.target.id;
+    const links = Array.from(document.getElementsByClassName("nav-link"));
+
+    links.forEach((link)=>{
+      if(linkID == link.id) {
+        link.classList.remove("text-light");
+        link.classList.add("text-warning");
+      } else {
+        link.classList.remove("text-warning");
+        link.classList.add("text-light");
+      }
+    });
+
+    socket.emit("join room", linkID, username.innerText);
     socket.emit("get messages");
   }
 });
