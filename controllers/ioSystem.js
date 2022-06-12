@@ -30,7 +30,7 @@ function connect(server) {
                 let currUser;
 
                 users.splice(user.index, 1);
-                
+
                 users.push({
                     username: username,
                     room: room,
