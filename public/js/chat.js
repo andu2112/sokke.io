@@ -5,20 +5,6 @@ const form = document.getElementById('form');
 const input = document.getElementById('input');
 const username = document.getElementById('username');
 
-function retro(data) {
-  messages.innerHTML = "";
-
-  data.messages.forEach((data)=>{
-    messages.innerHTML += `
-      <tr>
-        <td>${data.sender}: ${data.msg}</td>
-      </tr>
-    `;
-  });
-
-  window.scrollTo(0, document.body.scrollHeight);
-}
-
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   
@@ -31,6 +17,18 @@ form.addEventListener('submit', (e) => {
   }
 });
 
-socket.on('update message', retro);
+socket.on('update message', (data) => {
+  messages.innerHTML = "";
+
+  data.messages.forEach((data)=>{
+    messages.innerHTML += `
+      <tr>
+        <td>${data.sender}: ${data.msg}</td>
+      </tr>
+    `;
+  });
+
+  window.scrollTo(0, document.body.scrollHeight);
+});
 
 socket.emit('get messages');
