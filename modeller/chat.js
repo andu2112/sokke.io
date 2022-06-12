@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+// lage skjema
 const chatschema= new mongoose.Schema({
     msg:{
        type:String,
@@ -14,4 +15,6 @@ const chatschema= new mongoose.Schema({
         required: true
     }
 })
+
+// eksportere chat model
 module.exports = mongoose.model("Chat",chatschema)

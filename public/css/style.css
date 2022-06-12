@@ -1,3 +1,4 @@
+/* hindre padding og margin fra å ta bredden av elementene */
 * {
     box-sizing: border-box;
 }

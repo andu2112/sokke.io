@@ -27,13 +27,17 @@ mongoose.connect(url)
     console.log(err)
   })
 
+// koble til socket
 ioSystem.connect(server);
 
 app.set("view engine", "ejs");
 
+// sett public mappe
 app.use('/public', express.static(path.join(__dirname, 'public')));
+// bodyparser
 app.use(express.urlencoded({ extended: true }));
 
+// bruk flash meldinger
 app.use(flash());
 
 app.use(
@@ -46,11 +50,13 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+
 passport.use(User.createStrategy());
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// globale variabler brukt aktivt i ejs
 app.use((req, res, next) => {
   res.locals.error = req.flash('error');
   res.locals.errorMsg = req.flash('errorMsg');
@@ -60,6 +66,7 @@ app.use((req, res, next) => {
   next();
 });
 
+// ruter
 app.use(require('./routes/login.js'));
 app.use(require('./routes/signup.js'));
 app.use(require('./routes/logout.js'));
@@ -68,5 +75,3 @@ app.use(require('./routes/index.js'));
 server.listen(port, () => {
   console.log(` http://localhost:${port}/`);
 });
-
-///socekt.on("disconnection", () => 0)

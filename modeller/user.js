@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const passportLocalMongoose = require('passport-local-mongoose');
 
+// lage user skjema
 const schema= new mongoose.Schema({
     username:{
        type:String,
@@ -12,6 +13,8 @@ const schema= new mongoose.Schema({
     }
 })
 
+// bruke passport plugin
 schema.plugin(passportLocalMongoose);
 
+// eksportere user model
 module.exports = mongoose.model("User",schema)

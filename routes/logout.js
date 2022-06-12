@@ -11,6 +11,7 @@ router.get('/logout', middleware.isLoggedIn, (req, res) => {
         console.log(err);
         res.redirect("/");
     } else {
+        // oppdater success melding for login side
         req.flash('successMsg', 'You have been logged out.');
         res.redirect('/login');
     }
